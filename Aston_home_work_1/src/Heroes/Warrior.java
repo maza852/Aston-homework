@@ -1,19 +1,29 @@
+package Heroes;
+
+import Enemies.Enemy;
+import Heroes.Hero;
+
 // Воин наделен 1 способностью, но очень мощной
 // useRageOfSparta даёт суммарно 20 кратный урон врагу
 // здоровье по умолчанию 300 единиц
 public class Warrior extends Hero {
+    private static final int DEFAULT_HP = 300;
+    private static final int DEFAULT_DAMAGE = 25;
     public Warrior(String name) {
         super(name);
-        setDamageLevel(25);  // по умолчанию воин наносит 25 единиц урона
-        setHealth(300);
+        setDamageLevel(DEFAULT_DAMAGE);
+        setHealth(DEFAULT_HP);
     }
+
     // мертвый атаковать не может, потому добавлена проверка и вывод статуса героя (сомнительно, но окей)
     // мертвого врага тоже бить не надо
     @Override
     public void attackEnemy(Enemy enemy) {
-        if (isAlive() && enemy.isAlive()) {
-            System.out.println("Warrior \"" + this.getName() + "\" is attacking " + enemy);
-            enemy.takeDamage(this.getDamageLevel());
+        if (isAlive()) {
+            if (enemy.isAlive()) {
+                System.out.printf(this + " is attacking %s\n", enemy);
+                enemy.takeDamage(this.getDamageLevel());
+            }
         } else {
             System.out.println(this + " is dead");
         }

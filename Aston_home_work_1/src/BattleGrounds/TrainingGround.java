@@ -1,3 +1,10 @@
+package BattleGrounds;
+
+import Enemies.Enemy;
+import Heroes.Archer;
+import Heroes.Mage;
+import Heroes.Warrior;
+
 public class TrainingGround {
     public static void main(String[] args) {
         testBattle();
@@ -25,6 +32,6 @@ public class TrainingGround {
     }
 
     /*public static void showEnemyHealth(Enemy enemy) {
-        System.out.printf("Enemy has %d hp\n", enemy.getHealth());
+        System.out.printf("Enemies.Enemy has %d hp\n", enemy.getHealth());
     }*/
 }

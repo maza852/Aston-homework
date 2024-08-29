@@ -1,19 +1,27 @@
+package Enemies;
+
+import Interfaces.Mortal;
+import Heroes.Hero;
+
 public class Enemy implements Mortal {
     private int health;
     private int damageLevel;
+    private static final int DEFAULT_HP = 100;  // по умолчанию пусть у врага будет 100 hp
+    private static final int MIN_HP = 1;
+    private static final int DEFAULT_DAMAGE = 10;   // уровень урона врага по умолчанию 10 единиц
 
     public Enemy() {
-        this(100);      // по умолчанию пусть у врага будет 100 hp
+        this(DEFAULT_HP);
     }
 
     public Enemy(int health) {
         initialize(health);
-        setDamageLevel(10);     // уровень урона врага по умолчанию 10 единиц
+        setDamageLevel(DEFAULT_DAMAGE);
     }
 
     private void initialize(int health) {
         if (health <= 0)
-            setHealth(1);   // если по ошибке создавать врага с отрицательным или нулевым здоровьем, то устанавливаем минимальное hp
+            setHealth(MIN_HP);   // если по ошибке создавать врага с отрицательным или нулевым здоровьем, то устанавливаем минимальное hp
         else
             setHealth(health);
     }
@@ -65,6 +73,6 @@ public class Enemy implements Mortal {
 
     @Override
     public String toString() {
-        return "{" + this.getClass().getName() +  "}";
+        return "{" + this.getClass().getSimpleName() +  "}";
     }
 }

@@ -1,8 +1,14 @@
-// Зомби имеет особенность при которой получая урон и умирая, он имеет шанс воскреснуть с 333 единицами жизни
+package Enemies;
+
+import Enemies.Enemy;
+
+// Зомби имеет особенность при которой получая урон и умирая, он имеет шанс воскреснуть с половиной от жизни по умолчанию
 public class Zombie extends Enemy {
+    private static final int DEFAULT_HP = 666;
+    private static final int DEFAULT_DAMAGE = 25;   // урон по умолчанию 25 единиц
     public Zombie() {
-        super(666);
-        setDamageLevel(25);     // урон по умолчанию 25 единиц
+        super(DEFAULT_HP);
+        setDamageLevel(DEFAULT_DAMAGE);
     }
 
     @Override
@@ -15,7 +21,7 @@ public class Zombie extends Enemy {
             System.out.println(this + " is dead");
             int randNumber = (int) (Math.random() * 10);
             if (randNumber > 4) {
-                setHealth(333);
+                setHealth(DEFAULT_HP / 2);
                 System.out.println(this + " is back to 'life'!" + " HP = " + getHealth());
             }
         }

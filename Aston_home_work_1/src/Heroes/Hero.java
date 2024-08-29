@@ -1,12 +1,19 @@
+package Heroes;
+
+import Interfaces.Mortal;
+import Enemies.Enemy;
+
 public abstract class Hero implements Mortal {
     private String name;
     private int damageLevel;
     private int health;
+    private static final int DEFAULT_HP = 100;      // уровень здоровья по умолчанию 100 единиц
+    private static final int DEFAULT_DAMAGE = 20;   // размер урона наносимого врагу за 1 атаку по умолчанию 20 единиц
 
     public Hero(String name) {
         this.name = name;
-        setDamageLevel(20);      // размер урона наносимого врагу за 1 атаку по умолчанию 20 единиц
-        setHealth(100);     // уровень здоровья по умолчанию 100 единиц
+        setDamageLevel(DEFAULT_DAMAGE);
+        setHealth(DEFAULT_HP);
     }
 
     public String getName() {
@@ -14,8 +21,8 @@ public abstract class Hero implements Mortal {
     }
 
     public abstract void attackEnemy(Enemy enemy);
-    /*public void attackEnemy(Enemy enemy) {
-        System.out.println("Hero '" + this.getName() + "' is attacking enemy");
+    /*public void attackEnemy(Enemies.Enemy enemy) {
+        System.out.println("Heroes.Hero '" + this.getName() + "' is attacking enemy");
         enemy.takeDamage(damage);
     }*/
 
@@ -47,14 +54,14 @@ public abstract class Hero implements Mortal {
     public void takeDamage(int damage) {
         setHealth(this.health - damage);
 
-        System.out.println(this + " takes " + damage + " pts of damage."+ " HP = " + getHealth());
+        System.out.println(this + " takes " + damage + " pts of damage." + " HP = " + getHealth());
         if (!isAlive())
             System.out.println(this + " is dead");
     }
 
     @Override
     public String toString() {
-        return "{" + this.getClass().getName() +
+        return "{" + this.getClass().getSimpleName() +
                 ": " + this.name + "}";
     }
 }

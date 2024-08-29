@@ -1,9 +1,17 @@
+package BattleGrounds;
 // 7ой пункт в домашнем задании
 // здесь протестил придуманный доп.функционал к классам героев и врагов
 // получилось немного душновато, т.к. битва затяжная, но зато весь функционал проверил (вроде бы...)
 // в первом статик методе герои побеждают дракона
 // во втором три на три, где могут победить злодеи
 // если баловаться с уроном, то 2 предложения выше несостоятельны
+
+import Enemies.Dragon;
+import Enemies.Golem;
+import Enemies.Zombie;
+import Heroes.Archer;
+import Heroes.Mage;
+import Heroes.Warrior;
 
 public class EpicBattleGround {
     public static void main(String[] args) {
@@ -31,7 +39,7 @@ public class EpicBattleGround {
         // лучник-эльфийка мстит выстрелом по коленям)
         elf.shootAtKnees(dragon);
         // дракон использует спец атаку на всех героев
-        dragon.seaOfFire(dragonBorn, elf, rudeus);
+        dragon.useSeaOfFire(dragonBorn, elf, rudeus);
         // маг использует свою ульту)
         rudeus.putOnMyRobeAndWizardHat(dragon);
         // дракон дважды атакует воина
@@ -76,7 +84,7 @@ public class EpicBattleGround {
         zombie.setDamageLevel(70);
         Golem golem = new Golem(300);
 
-        dragon.seaOfFire(warrior, mag, archer);
+        dragon.useSeaOfFire(warrior, mag, archer);
 
         golem.attackHero(archer);
 
@@ -112,7 +120,7 @@ public class EpicBattleGround {
         dragon.attackHero(archer);
 
         if (!mag.isAlive() && !archer.isAlive() && !warrior.isAlive())
-            System.out.println("Looks like bad guys are win");
+            System.out.println("Looks like the bad guys have won");
         else
             System.out.println("At least one hero is still alive");
     }

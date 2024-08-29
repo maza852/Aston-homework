@@ -1,3 +1,9 @@
+package BattleGrounds;
+
+import Enemies.Enemy;
+import Heroes.Hero;
+import Heroes.Warrior;
+
 public class BattleGround {
     public static void main(String[] args) {
         Hero hero = new Warrior("Ultraman");
